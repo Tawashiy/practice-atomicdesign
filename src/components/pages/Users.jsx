@@ -1,13 +1,46 @@
 import styled from "styled-components";
+import { SearchInput } from "../molecules/SearchInput";
+import { UserCard } from "../organisms/user/UserCard";
+
+const users = [...Array(10).keys()].map((val) => {
+  return {
+    id: val,
+    name: `わんこ${val}`,
+    image: "https://source.unsplash.com/Sg3XwuEpybU",
+    email: "aaa@aaaa.aa",
+    phone: "090-0000-0000",
+    company: {
+      name: "わんこ株式会社"
+    },
+    website: "htttp://asasas"
+  };
+});
 
 export const Users = () => {
   return (
     <SContainer>
-      <h2>ユーザー一覧</h2>
+      <SUserArea>
+        <h2>ユーザー一覧</h2>
+        <SearchInput />
+        {users.map((user) => (
+          <UserCard key={user.id} user={user} />
+        ))}
+      </SUserArea>
     </SContainer>
   );
 };
 
 const SContainer = styled.div`
-  text-align: center;
+  display: flex;
+  flex-direction: column; // 縦に積む
+  align-items: center;
+  padding: 24px;
+`;
+
+const SUserArea = styled.div`
+  padding-top: 40px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(aoto-fit, minmax(200px, 1fr));
+  grid-gap: 20px;
 `;
