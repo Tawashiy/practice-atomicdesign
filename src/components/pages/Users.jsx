@@ -19,9 +19,9 @@ const users = [...Array(10).keys()].map((val) => {
 export const Users = () => {
   return (
     <SContainer>
+      <h2>ユーザー一覧</h2>
+      <SearchInput />
       <SUserArea>
-        <h2>ユーザー一覧</h2>
-        <SearchInput />
         {users.map((user) => (
           <UserCard key={user.id} user={user} />
         ))}
@@ -32,7 +32,7 @@ export const Users = () => {
 
 const SContainer = styled.div`
   display: flex;
-  flex-direction: column; // 縦に積む
+  flex-direction: column;
   align-items: center;
   padding: 24px;
 `;
@@ -41,6 +41,6 @@ const SUserArea = styled.div`
   padding-top: 40px;
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(aoto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   grid-gap: 20px;
 `;
